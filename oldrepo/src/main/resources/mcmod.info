@@ -1,0 +1,21 @@
+{
+	"modListVersion": 2,
+	"modList": [{
+		"modid": "${modId}",
+		"name": "${modName}",
+		"description": "Adds Pistons, Rotators and more.",
+		"version": "${modVersion}",
+		"mcversion": "${minecraftVersion}",
+		"url": "https://github.com/Jerome226/Pistronics2",
+		"updateUrl": "",
+		"authorList": ["Letiu"],
+		"credits": "Written by Letiu, special thanks to VSWE, Pahimar and all other modders out there! =)",
+		"logoFile": "",
+		"screenshots": [],
+		"parent": "",
+		"requiredMods": [],
+		"dependencies": [],
+		"dependants": [],
+		"useDependencyInformation": true
+	}]
+}
