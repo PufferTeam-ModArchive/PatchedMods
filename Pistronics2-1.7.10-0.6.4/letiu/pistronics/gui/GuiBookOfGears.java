@@ -58,7 +58,7 @@ public class GuiBookOfGears extends GuiBase {
 		this.fontRenderer = Minecraft.getMinecraft().fontRenderer;
 		this.renderBlocks = new RenderBlocks();
 		
-		pages = new Page[23];
+		pages = new Page[21];
 		int i = 0;
 		pages[i++] = new PageBook();
 		// TODO: INDEX 
