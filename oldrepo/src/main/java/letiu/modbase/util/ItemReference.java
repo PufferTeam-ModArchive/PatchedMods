@@ -1,5 +1,6 @@
 package letiu.modbase.util;
 
+import com.dunk.tfc.api.TFCItems;
 import letiu.pistronics.items.ItemSpade;
 import net.minecraft.block.*;
 import net.minecraft.init.Blocks;
@@ -85,7 +86,7 @@ public class ItemReference {
 	}
 	
 	public static ItemStack getDye(int dmg) {
-		return new ItemStack(Items.dye, 1, dmg);
+		return new ItemStack(TFCItems.dye, 1, dmg);
 	}
 	
 	public static boolean isHarvestTool(ItemStack stack) {

@@ -89,28 +89,11 @@ public class ExtensionMatRecipes {
         if ((ingrData & CAMOU) != 0) {
             recipe.addIngredient(BlockItemUtil.getStack(ItemData.camoupaste));
         }
-        if ((ingrData & STICKY) == 0 && (ingrData & SUPER_STICKY) != 0) {
-            recipe.addIngredient(ItemReference.getDye(1));
-        }
         else if ((ingrData & STICKY) != 0 && (ingrData & SUPER_STICKY) != 0) {
             if ((ingrData & REDIO) != 0) {
-                PShapelessRecipe glue1 = recipe.copy();
-                glue1.addIngredient(BlockItemUtil.getStack(ItemData.redioGlue));
-                glue1.addIngredient(ItemReference.getDye(1));
-                recipes.add(glue1);
-
                 recipe.addIngredient(BlockItemUtil.getStack(ItemData.redioSuperGlue));
             }
             else {
-                PShapelessRecipe glue1 = recipe.copy();
-                glue1.addIngredient(BlockItemUtil.getStack(ItemData.glue));
-                glue1.addIngredient(ItemReference.getDye(1));
-                recipes.add(glue1);
-                PShapelessRecipe glue2 = recipe.copy();
-                glue2.addIngredient(BlockItemUtil.getStack(ItemReference.SLIME));
-                glue2.addIngredient(ItemReference.getDye(1));
-                recipes.add(glue2);
-
                 recipe.addIngredient(BlockItemUtil.getStack(ItemData.super_glue));
             }
         }
