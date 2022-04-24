@@ -56,7 +56,11 @@ public class ConfigData {
     public static boolean showAllSails = false;
 
     public static boolean alternateSlimeblockRecipe = false;
-	
+
+	private static String fallingBlockListString = "";
+
+	private static ArrayList<String> fallingBlockList = new ArrayList<String>();
+
 	private static final TreeMap<String, ConfigObject> configDataMap = new TreeMap<String, ConfigObject>();
 	
 	public static void init() {
@@ -100,6 +104,8 @@ public class ConfigData {
 				+ "Make sure you are using modIDs not the names."));
 		configDataMap.put("modWhiteList", new ConfigObject(modWhiteListString, "Mod White List. Blocks added by mods listed here can be moved by pistons or rotators. Leave this empty if you don't want to use a whitelist. For vanilla blocks add \"minecraft\""
 				+ "Make sure you are using modIDs not the names."));
+
+		configDataMap.put("fallingBlockList", new ConfigObject(fallingBlockListString, "Blocks listed here are treated as falling blocks (e.g. sand, gravel). The format is \"<unloacalized name>\" or \"<unloacalized name>:<metadata>\" devided by a ','. Don't use the prefix \"tile.\"."));
 	}
 	
 	public static void load() {
@@ -159,7 +165,15 @@ public class ConfigData {
 			name = name.trim();
 			if (!name.equals("")) modWhiteList.add(name);
 		}
-		
+
+		fallingBlockListString = (String)getValue("fallingBlockList");
+		names = fallingBlockListString.split(",");
+		for (String name : names) {
+			name = name.trim();
+			if (!name.equals(""))
+				fallingBlockList.add(name);
+		}
+
 		// TODO: FIX FMP STUFF!
 		blackList.add("tile.multipart");
 	}
@@ -181,6 +195,12 @@ public class ConfigData {
 		int meta = proxy.getMetadata();
 		return blackList.contains(name) || blackList.contains(name + ":" + meta);
 		
+	}
+
+	public static boolean isFallingBlock(BlockProxy proxy) {
+		String name = proxy.getBlockName();
+		int meta = proxy.getMetadata();
+		return (fallingBlockList.contains(name) || fallingBlockList.contains(name + ":" + meta));
 	}
 	
 	public static boolean canBlockBeMoved(BlockProxy proxy) {

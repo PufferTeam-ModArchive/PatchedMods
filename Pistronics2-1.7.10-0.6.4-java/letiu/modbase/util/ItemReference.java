@@ -1,7 +1,9 @@
 package letiu.modbase.util;
 
 import com.dunk.tfc.api.TFCItems;
+import letiu.pistronics.config.ConfigData;
 import letiu.pistronics.items.ItemSpade;
+import letiu.pistronics.util.BlockProxy;
 import net.minecraft.block.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -145,5 +147,9 @@ public class ItemReference {
 
 	public static boolean isPiston(Block block) {
 		return block instanceof BlockPistonBase || block instanceof BlockDropper || block instanceof BlockDispenser;
+	}
+
+	public static boolean isFallingBlock(BlockProxy proxy) {
+		return (proxy.getBlock() instanceof net.minecraft.block.BlockFalling || ConfigData.isFallingBlock(proxy));
 	}
 }
