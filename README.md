@@ -1,2 +1,2 @@
-# Telomerase Files
-All the files required for the Telomerase modpack
+# Patched Mods
+All the mods patched for the Telomerase modpack
