@@ -27,8 +27,6 @@
 /Pistronics-Repo/*.ipr
 /Pistronics-Repo/*.iws
 /Pistronics-Repo/src/main/resources/mixins.*.json
-/Pistronics-Repo/*.bat
 /Pistronics-Repo/*.DS_Store
-/Pistronics-Repo/!gradlew.bat
 /Pistronics-Repo/Pistronics2.iml
 
