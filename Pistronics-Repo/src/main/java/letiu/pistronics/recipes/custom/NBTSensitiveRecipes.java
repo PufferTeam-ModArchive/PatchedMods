@@ -10,6 +10,7 @@ import letiu.pistronics.data.ItemData;
 import letiu.pistronics.recipes.Comparators;
 import letiu.pistronics.recipes.PRecipeRegistry;
 import letiu.pistronics.recipes.PShapelessRecipe;
+import letiu.pistronics.recipes.PShapedRecipe;
 import letiu.pistronics.util.ExtensionUtil;
 import net.minecraft.item.ItemStack;
 
@@ -143,10 +144,15 @@ public class NBTSensitiveRecipes {
 
         */
 
+        PShapedRecipe rodRecipe = new PShapedRecipe();
         ItemStack rod = BlockItemUtil.getStack(BlockData.rod);
         rod.stackTagCompound = BRod.getDefaultNBT();
         rod.stackSize = 6;
-
+        rodRecipe.setResult(rod);
+        rodRecipe.addStack(ItemReference.LUMBER_OREDICT, 1, 0);
+        rodRecipe.addStack(ItemReference.IRON_INGOT, 1, 1);
+        rodRecipe.addStack(ItemReference.LUMBER_OREDICT, 1, 2);
+        PRecipeRegistry.registerShapedRecipe(rodRecipe);
         ItemStack simpleRod = rod.copy();
         simpleRod.stackSize = 1;
 

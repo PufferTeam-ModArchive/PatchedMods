@@ -40,6 +40,6 @@ public class ShapelessHandler extends ShapelessRecipeHandler {
 
     @Override
     public String getRecipeName() {
-        return "Pistronics Crafting";
+        return "Pistronics Shapeless";
     }
 }

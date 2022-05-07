@@ -40,7 +40,7 @@ public class ExtensionMatRecipes {
     public static final int VARIATIONS = 32;
 
     public static final int STICKY = 1;
-    public static final int SUPER_STICKY = 2;
+    public static final int SUPER_STICKY = 1;
     public static final int REDSTONE = 4;
     public static final int CAMOU = 8;
     public static final int REDIO = 16;
@@ -89,9 +89,7 @@ public class ExtensionMatRecipes {
         if ((ingrData & CAMOU) != 0) {
             recipe.addIngredient(BlockItemUtil.getStack(ItemData.camoupaste));
         }
-        if ((ingrData & STICKY) == 0 && (ingrData & SUPER_STICKY) != 0) {
-            recipe.addIngredient(BlockItemUtil.getStack(ItemData.super_glue));
-        }
+
         else if ((ingrData & STICKY) != 0 && (ingrData & SUPER_STICKY) != 0) {
             if ((ingrData & REDIO) != 0) {
                 recipe.addIngredient(BlockItemUtil.getStack(ItemData.redioSuperGlue));

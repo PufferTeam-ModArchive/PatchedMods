@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class Comparators {
 
     private static IStackComparator gearComparator, rodComparator, rsRodComparator,
-                                    rodPartComparator, rsRodPartComparator;
+            rodPartComparator, rsRodPartComparator;
 
     public static IStackComparator getGearComparator() {
         if (gearComparator == null) {

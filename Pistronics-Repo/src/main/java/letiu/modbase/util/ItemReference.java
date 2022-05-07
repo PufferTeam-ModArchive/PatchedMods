@@ -55,7 +55,9 @@ public class ItemReference {
 	public static final Item MILK = Items.milk_bucket;
 	
 	public static final Item BOOK = Items.book;
-	
+
+	public static final Item LUMBER_OREDICT = OreDictionary.getOreName('ingotIron');
+
 	public static boolean isDye(ItemStack stack, int color) {
 		if (stack == null) return false;
 		switch (color) {
