@@ -310,7 +310,7 @@ public class TileMotion extends TileElementHolder implements ISpecialRenderTile,
 //				world.isRemote = false;
 //			}
 //			else {
-				WorldUtil.setBlock(world, x, y, z, element, elementMeta, 4);
+				WorldUtil.setBlock(world, x, y, z, element, elementMeta, 5);
 //			}
 			
 			if (elementTile != null) {			
@@ -335,7 +335,7 @@ public class TileMotion extends TileElementHolder implements ISpecialRenderTile,
 					elementTile.yCoord = y;
 					elementTile.zCoord = z;
 					WorldUtil.setTileEntity(world, x, y, z, elementTile);
-					WorldUtil.setBlock(world, x, y, z, element, elementMeta, 4);
+					WorldUtil.setBlock(world, x, y, z, element, elementMeta, 5);
 				}
 				
 				tile = WorldUtil.getTileEntity(world, x, y, z);
