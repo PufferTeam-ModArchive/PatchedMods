@@ -8,11 +8,10 @@ import net.minecraft.potion.Potion;
 public class BasePotion extends Potion {
 
 	public static void expandPotionArray() {
-		
-		if (Potion.potionTypes.length >= 127) return;
-		
+		if (Potion.potionTypes.length >= 127) {
+			return;
+		}
 		Potion[] potionTypes = null;
-
 		for (Field f : Potion.class.getDeclaredFields()) {
 			f.setAccessible(true);
 			try {
@@ -20,7 +19,7 @@ public class BasePotion extends Potion {
 					Field modfield = Field.class.getDeclaredField("modifiers");
 					modfield.setAccessible(true);
 					modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
-			
+
 					potionTypes = (Potion[])f.get(null);
 					final Potion[] newPotionTypes = new Potion[127];
 					System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
@@ -33,7 +32,7 @@ public class BasePotion extends Potion {
 			}
 		}
 	}
-	
+
 	protected BasePotion(int ID, boolean eff, int color) {
 		super(ID, eff, color);
 	}

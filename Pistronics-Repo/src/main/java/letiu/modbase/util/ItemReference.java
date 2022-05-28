@@ -17,6 +17,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ItemReference {
 
 	public static final Item SLIME = Items.slime_ball;
+
 	public static final Block REDSTONE_TORCH = Blocks.redstone_torch;
 	public static final Block REDSTONE_BLOCK = Blocks.redstone_block;
 	
@@ -34,7 +35,7 @@ public class ItemReference {
 
 	public static final Block OBSIDIAN = Blocks.obsidian;
 	
-	public static final Item STICK = Items.stick;
+	public static final Item STICK = TFCItems.stick;
 	public static final Item IRON_INGOT = Items.iron_ingot;
 	public static final Item NETHER_WART = Items.nether_wart;
 	public static final Item SUGAR = Items.sugar;
@@ -42,9 +43,9 @@ public class ItemReference {
 	public static final Item COMPARATOR = Items.comparator;
 	public static final Item DIAMOND = Items.diamond;
 	
-	public static final Item BOW = Items.bow;
-	public static final Item ARROW = Items.arrow;
-	
+	public static final Item BOW = TFCItems.bow;
+	public static final Item ARROW = TFCItems.arrow;
+
 	public static final Item ROTTEN_FLESH = Items.rotten_flesh;
 	public static final Item POISONOUS_POTATO = Items.poisonous_potato;
 	public static final Item SPIDER_EYE = Items.spider_eye;

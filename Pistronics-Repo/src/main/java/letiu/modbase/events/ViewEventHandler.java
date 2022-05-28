@@ -1,11 +1,7 @@
 package letiu.modbase.events;
 
-import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.init.Blocks;
-import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.event.DrawBlockHighlightEvent;
-import net.minecraftforge.common.ForgeHooks;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 
 public class ViewEventHandler {
 

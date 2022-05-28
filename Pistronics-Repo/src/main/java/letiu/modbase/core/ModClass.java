@@ -1,5 +1,16 @@
 package letiu.modbase.core;
 
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.relauncher.Side;
 import letiu.modbase.blocks.BlockCollector;
 import letiu.modbase.blocks.VanillaData;
 import letiu.modbase.config.ConfigHandler;
@@ -10,21 +21,16 @@ import letiu.modbase.items.ItemCollector;
 import letiu.modbase.proxies.IProxy;
 import letiu.modbase.render.TextureMapper;
 import letiu.pistronics.config.ConfigData;
-import letiu.pistronics.data.*;
+import letiu.pistronics.data.BlockData;
+import letiu.pistronics.data.EntityData;
+import letiu.pistronics.data.GuiHandler;
+import letiu.pistronics.data.ItemData;
+import letiu.pistronics.data.PacketData;
 import letiu.pistronics.recipes.Recipes;
-import letiu.pistronics.reference.ModInformation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
 
-@Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION)
+@Mod(modid = "Pistronics2", name = "Pistronics 2", version = "0.6.3")
 public class ModClass {
 
 	@Instance(ModInformation.ID)
@@ -39,56 +45,44 @@ public class ModClass {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-
-		// config
 		ConfigData.init();
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		ConfigData.load();
-		
-		// modbase init
+
 		VanillaData.init();
 		TextureMapper.init();
 		BlockCollector.init();
 		ItemCollector.init();
-		
-		// pistronics init
 		BlockData.init();
 		ItemData.init();
 		EntityData.init();
-//		PRenderManager.init();
-
-		// create/register stuff
 		BlockCollector.createBlocks();
 		ItemCollector.createItems();
 		EntityCollector.registerEntities();
 
-		// Potions
-//		BasePotion.expandPotionArray();
-//		PotionData.init();
-		
-		// proxy
 		proxy.init();
 		proxy.registerRenderers();
 		proxy.registerEvents();
-		
 		Recipes.registerRecipes();
-        //NEIWrapper.addRecipeHandlers();
-		
-		//MinecraftForge.EVENT_BUS.register(new SystemController());
 	}
 	
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
 		proxy.registerTileEntities();
 		PacketData.init();
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, (IGuiHandler)new GuiHandler());
 		
 		MinecraftForge.EVENT_BUS.register(arrowEventHandler);
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-        RecipeHandlers.registerHandlers();
-
+		if (event.getSide() == Side.CLIENT && Loader.isModLoaded("NotEnoughItems")) {
+			RecipeHandlers.registerHandlers();
+		}
+	}
+	static {
+		modTap = new ModCreativeTab();
+		arrowEventHandler = new ArrowEventHandler();
 	}
 }

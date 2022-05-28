@@ -2,10 +2,12 @@ package letiu.modbase.util;
 
 import java.util.List;
 
+import java.util.List;
 import letiu.modbase.core.ModClass;
 import letiu.pistronics.data.PBlock;
 import letiu.pistronics.data.PItem;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,7 +20,9 @@ import net.minecraft.world.World;
 public class BlockItemUtil {
 
 	public static Block getBlockFromStack(ItemStack stack) {
-		if (stack == null) return null;
+		if (stack == null) {
+			return null;
+		}
 		return Block.getBlockFromItem(stack.getItem());
 	}
 	
@@ -104,8 +108,10 @@ public class BlockItemUtil {
 
 		if (block != null) {
 			IIcon blockIcon = block.getIcon(0, meta);
-			
-			if (blockIcon == null) return null;
+
+			if (blockIcon == null) {
+				return null;
+			}
 			
 			String iconName = blockIcon.getIconName();
 			ResourceLocation texture = new ResourceLocation("textures/blocks/" + iconName + ".png");
@@ -120,9 +126,5 @@ public class BlockItemUtil {
 		
 		return null;
 	}
-	
-	
-	
-	
 	
 }

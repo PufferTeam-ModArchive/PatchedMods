@@ -1,12 +1,15 @@
 package letiu.modbase.proxies;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import java.util.List;
-
 import letiu.modbase.blocks.SidedBlock;
 import letiu.modbase.entities.BaseEntity;
 import letiu.modbase.events.ViewEventHandler;
 import letiu.modbase.items.BaseItem;
 import letiu.modbase.items.ItemCollector;
+import letiu.modbase.proxies.CommonProxy;
 import letiu.modbase.render.TileUniversalRenderer;
 import letiu.modbase.render.UniversalEntityRenderer;
 import letiu.modbase.tiles.SRInventoryTile;
@@ -21,9 +24,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 

@@ -5,6 +5,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+import letiu.modbase.entities.BaseEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -15,7 +19,6 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
@@ -360,27 +363,23 @@ public class EntityArrowOverwrite extends BaseEntity implements IProjectile
                                 }
                             }
 
-                            if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase)
-                            {
+                            if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase) {
                                 EnchantmentHelper.func_151384_a(entitylivingbase, this.shootingEntity);
                                 EnchantmentHelper.func_151385_b((EntityLivingBase)this.shootingEntity, entitylivingbase);
                             }
 
-                            if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity && movingobjectposition.entityHit instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
-                            {
+                            if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity && movingobjectposition.entityHit instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP) {
                                 ((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
                             }
                         }
 
                         this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
-                        if (!(movingobjectposition.entityHit instanceof EntityEnderman))
-                        {
+                        if (!(movingobjectposition.entityHit instanceof EntityEnderman)) {
                             this.setDead();
                         }
                     }
-                    else
-                    {
+                    else {
                         this.motionX *= -0.10000000149011612D;
                         this.motionY *= -0.10000000149011612D;
                         this.motionZ *= -0.10000000149011612D;
@@ -408,17 +407,14 @@ public class EntityArrowOverwrite extends BaseEntity implements IProjectile
                     this.arrowShake = 7;
                     this.setIsCritical(false);
 
-                    if (this.field_145790_g.getMaterial() != Material.air)
-                    {
+                    if (this.field_145790_g.getMaterial() != Material.air) {
                         this.field_145790_g.onEntityCollidedWithBlock(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
                     }
                 }
             }
 
-            if (this.getIsCritical())
-            {
-                for (i = 0; i < 4; ++i)
-                {
+            if (this.getIsCritical()) {
+                for (i = 0; i < 4; ++i) {
                     this.worldObj.spawnParticle("crit", this.posX + this.motionX * (double)i / 4.0D, this.posY + this.motionY * (double)i / 4.0D, this.posZ + this.motionZ * (double)i / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
                 }
             }
@@ -429,23 +425,18 @@ public class EntityArrowOverwrite extends BaseEntity implements IProjectile
             f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
             this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
 
-            for (this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f2) * 180.0D / Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F)
-            {
-                ;
+            for (this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f2) * 180.0D / Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
             }
 
-            while (this.rotationPitch - this.prevRotationPitch >= 180.0F)
-            {
+            while (this.rotationPitch - this.prevRotationPitch >= 180.0F) {
                 this.prevRotationPitch += 360.0F;
             }
 
-            while (this.rotationYaw - this.prevRotationYaw < -180.0F)
-            {
+            while (this.rotationYaw - this.prevRotationYaw < -180.0F) {
                 this.prevRotationYaw -= 360.0F;
             }
 
-            while (this.rotationYaw - this.prevRotationYaw >= 180.0F)
-            {
+            while (this.rotationYaw - this.prevRotationYaw >= 180.0F) {
                 this.prevRotationYaw += 360.0F;
             }
 
@@ -454,10 +445,8 @@ public class EntityArrowOverwrite extends BaseEntity implements IProjectile
             float f3 = 0.99F;
             f1 = 0.05F;
 
-            if (this.isInWater())
-            {
-                for (int l = 0; l < 4; ++l)
-                {
+            if (this.isInWater()) {
+                for (int l = 0; l < 4; ++l) {
                     f4 = 0.25F;
                     this.worldObj.spawnParticle("bubble", this.posX - this.motionX * (double)f4, this.posY - this.motionY * (double)f4, this.posZ - this.motionZ * (double)f4, this.motionX, this.motionY, this.motionZ);
                 }
@@ -465,8 +454,7 @@ public class EntityArrowOverwrite extends BaseEntity implements IProjectile
                 f3 = 0.8F;
             }
 
-            if (this.isWet())
-            {
+            if (this.isWet()) {
                 this.extinguish();
             }
 
@@ -519,17 +507,13 @@ public class EntityArrowOverwrite extends BaseEntity implements IProjectile
         this.arrowShake = par1NBTTagCompound.getByte("shake") & 255;
         this.inGround = par1NBTTagCompound.getByte("inGround") == 1;
 
-        if (par1NBTTagCompound.hasKey("damage", 99))
-        {
+        if (par1NBTTagCompound.hasKey("damage", 99)) {
             this.damage = par1NBTTagCompound.getDouble("damage");
         }
-
-        if (par1NBTTagCompound.hasKey("pickup", 99))
-        {
+        if (par1NBTTagCompound.hasKey("pickup", 99)) {
             this.canBePickedUp = par1NBTTagCompound.getByte("pickup");
         }
-        else if (par1NBTTagCompound.hasKey("player", 99))
-        {
+        else if (par1NBTTagCompound.hasKey("player", 99)) {
             this.canBePickedUp = par1NBTTagCompound.getBoolean("player") ? 1 : 0;
         }
     }

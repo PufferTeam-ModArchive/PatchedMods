@@ -1,8 +1,9 @@
 package letiu.modbase.items;
 
-import letiu.modbase.core.ModClass;
-import letiu.pistronics.data.PItem;
 import cpw.mods.fml.common.registry.GameRegistry;
+import letiu.modbase.core.ModClass;
+import letiu.modbase.items.BaseItem;
+import letiu.pistronics.data.PItem;
 
 public class ItemMaker {
 

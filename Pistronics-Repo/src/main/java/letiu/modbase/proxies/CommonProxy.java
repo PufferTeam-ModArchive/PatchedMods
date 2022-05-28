@@ -20,32 +20,34 @@ public abstract class CommonProxy implements IProxy {
 
 	protected FakeWorld fakeWorld, logicFakeWorld;
 	protected EntityPlayerMP fakePlayer;
-	
+
 	@Override
 	public EntityPlayerMP getFakePlayerMP() {
-		if (fakePlayer == null) {
-			World world = DimensionManager.getProvider(0).worldObj;
-			fakePlayer = FakePlayerFactory.get((WorldServer) world, new GameProfile(new UUID(1, 2), "packetFakePlayer"));
+		if (this.fakePlayer == null) {
+			World world = DimensionManager.getProvider((int)0).worldObj;
+			this.fakePlayer = FakePlayerFactory.get((WorldServer)((Object)world), new GameProfile(new UUID(1L, 2L), "packetFakePlayer"));
 		}
-		return fakePlayer;
+		return this.fakePlayer;
 	}
-	
+
 	@Override
 	public FakeWorld getFakeWorld(World realWorld) {
-		if (fakeWorld == null) {
-			fakeWorld = new FakeWorld(realWorld);
+		if (this.fakeWorld == null) {
+			this.fakeWorld = new FakeWorld(realWorld);
+		} else {
+			this.fakeWorld.setRealWorld(realWorld);
 		}
-		else fakeWorld.setRealWorld(realWorld);
-		return fakeWorld;
+		return this.fakeWorld;
 	}
-	
+
 	@Override
 	public FakeWorld getLogicFakeWorld(World realWorld) {
-		if (logicFakeWorld == null) {
-			logicFakeWorld = new FakeWorld(realWorld);
+		if (this.logicFakeWorld == null) {
+			this.logicFakeWorld = new FakeWorld(realWorld);
+		} else {
+			this.logicFakeWorld.setRealWorld(realWorld);
 		}
-		else logicFakeWorld.setRealWorld(realWorld);
-		return logicFakeWorld;
+		return this.logicFakeWorld;
 	}
 	
 	@Override

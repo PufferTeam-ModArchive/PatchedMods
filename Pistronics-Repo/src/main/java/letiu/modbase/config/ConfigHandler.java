@@ -1,18 +1,10 @@
 package letiu.modbase.config;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Set;
-import java.util.TreeMap;
-
 import letiu.pistronics.config.ConfigData;
 import letiu.pistronics.config.ConfigObject;
-import letiu.pistronics.data.BlockData;
-import letiu.pistronics.data.ItemData;
-import letiu.pistronics.data.PBlock;
-import letiu.pistronics.data.PItem;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 
 public class ConfigHandler {
 	
@@ -40,7 +32,7 @@ public class ConfigHandler {
 					co.value = configuration.get(TWEAKS, (String) key, (Boolean) co.value, co.comment).getBoolean((Boolean) co.value);
 				}
 				else if (co.value instanceof Double) {
-					co.value = configuration.get(TWEAKS, (String) key, (Double) co.value, co.comment).getDouble(6D);
+					co.value = configuration.get(TWEAKS, (String) key, (Double) co.value, co.comment).getDouble(6.0D);
 				}
 				else if (co.value instanceof String) {
 					co.value = configuration.get(TWEAKS, (String) key, (String) co.value, co.comment).getString();

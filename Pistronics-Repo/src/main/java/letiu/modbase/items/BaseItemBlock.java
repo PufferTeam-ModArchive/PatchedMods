@@ -24,13 +24,16 @@ public class BaseItemBlock extends ItemBlock implements IBaseItem {
 		this.data = ((BaseBlock) block).getItemBlock();
 		this.data.item = this;
 		
-		if (getHasSubtypes()) setHasSubtypes(true);
+		if (getHasSubtypes()) {
+			setHasSubtypes(true);
+		}
 		setMaxDamage(getMaxDamage());
 		setMaxStackSize(data.getMaxStackSize());
 	}
-	
+
+	@Override
 	public PItem getData() {
-		return data;
+		return this.data;
 	}
 	
 	public void setData(PItem data) {
@@ -38,30 +41,29 @@ public class BaseItemBlock extends ItemBlock implements IBaseItem {
 	}
 	
 	public boolean func_150936_a(World world, int x, int y, int z, int side, EntityPlayer player, ItemStack stack) {
-		if (data.canBlockTrigger(world, x, y, z, side, player, stack)) {
+		if (this.data.canBlockTrigger(world, x, y, z, side, player, stack)) {
 			return true;
 		}
 		else return super.func_150936_a(world, x, y, z, side, player, stack);
 	}
 	
 	@Override
+	@Override
 	public IIcon getIcon(ItemStack stack, int pass) {
-		
-		String iconKey = data.getIcon(stack, pass);
-		
-		if (iconKey == null) return getBoxIcon();
-		
-		if (iconKey.startsWith(BaseBlock.BLOCK_PREFIX)) {
+		String iconKey = this.data.getIcon(stack, pass);
+		if (iconKey == null) {
+			return this.getBoxIcon();
+		}
+		if (iconKey.startsWith("[Block]")) {
 			String[] parts = iconKey.split("x");
 			int blockID = Integer.valueOf(parts[1]);
 			int blockMeta = Integer.valueOf(parts[2]);
-			
 			Block block = BlockItemUtil.getBlockByID(blockID);
-			if (block == null) return getBoxIcon();
-			
+			if (block == null) {
+				return this.getBoxIcon();
+			}
 			return block.getIcon(pass, blockMeta);
 		}
-		
 		return TextureMapper.iconMap.get(iconKey);
 	}
 	
@@ -71,22 +73,22 @@ public class BaseItemBlock extends ItemBlock implements IBaseItem {
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean value) {
-		data.addInformation(stack, player, list, value);
+		this.data.addInformation(stack, player, list, value);
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return data.getUnlocalizedName(super.getUnlocalizedName(stack), stack);
+		return this.data.getUnlocalizedName(super.getUnlocalizedName(stack), stack);
 	}
 	
 	@Override
 	public int getSpriteNumber() {
-		return data.getSpriteNumber();
+		return this.data.getSpriteNumber();
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		return data.onItemRightClick(stack, world, player);
+		return this.data.onItemRightClick(stack, world, player);
 	}
 	
 	@Override
@@ -120,13 +122,10 @@ public class BaseItemBlock extends ItemBlock implements IBaseItem {
 	}
 	
 	@Override
-	public boolean placeBlockAt(ItemStack stack, EntityPlayer player,
-			World world, int x, int y, int z, int side, float hitX, float hitY,
-			float hitZ, int metadata) {
-		if (data.overwritesPlaceBlockAt()) {
-			return data.placeBlockAt(stack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
-		}
-		else {
+	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata) {
+		if (this.data.overwritesPlaceBlockAt()) {
+			return this.data.placeBlockAt(stack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
+		} else {
 			return super.placeBlockAt(stack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
 		}
 	}

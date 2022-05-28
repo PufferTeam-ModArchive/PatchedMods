@@ -1,7 +1,8 @@
 package letiu.modbase.items;
 
 import java.util.ArrayList;
-
+import letiu.modbase.items.BaseItem;
+import letiu.modbase.items.ItemMaker;
 import letiu.pistronics.data.ItemData;
 import letiu.pistronics.data.PItem;
 

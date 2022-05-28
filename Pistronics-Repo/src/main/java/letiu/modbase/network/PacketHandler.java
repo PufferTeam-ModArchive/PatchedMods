@@ -1,22 +1,19 @@
 package letiu.modbase.network;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.world.World;
-import net.minecraftforge.common.DimensionManager;
-import letiu.modbase.core.ModClass;
-import letiu.pistronics.packets.LocationPacket;
-import letiu.pistronics.reference.ModInformation;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
+import letiu.modbase.core.ModClass;
+import letiu.modbase.network.CustomPacket;
+import letiu.pistronics.packets.LocationPacket;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.common.DimensionManager;
+
 
 public class PacketHandler {
 
-	private static SimpleNetworkWrapper wrapper = new SimpleNetworkWrapper(ModInformation.CHANNEL);
-	//private static ArrayList<CustomPacket> packets = new ArrayList<CustomPacket>();
+	private static SimpleNetworkWrapper wrapper = new SimpleNetworkWrapper("pistronics2");	//private static ArrayList<CustomPacket> packets = new ArrayList<CustomPacket>();
 	
 	private static int counter = 0;
 	

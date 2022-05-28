@@ -50,7 +50,7 @@ public class BaseBlock extends Block {
 	public void registerBlockIcons(IIconRegister iconRegister) {
 		if (data.textures != null) {
 			for (String path : data.textures) {
-				TextureMapper.iconMap.put(path, iconRegister.registerIcon(ModInformation.RESOURCE_LOCATION + path));
+				TextureMapper.iconMap.put(path, iconRegister.registerIcon("pistronics:" + path));
 			}
 		}
 	}
@@ -62,13 +62,13 @@ public class BaseBlock extends Block {
 		
 		if (iconKey.startsWith(BLOCK_PREFIX)) {
 			String[] parts = iconKey.split("x");
-			int blockID = Integer.valueOf(parts[1]);
-			int blockMeta = Integer.valueOf(parts[2]);
+			int blockID = Integer.valueOf(parts[1]).intValue();
+			int blockMeta = Integer.valueOf(parts[2]).intValue();
 			
 			return BlockItemUtil.getBlockByID(blockID).getIcon(side, blockMeta);
 		}
 		
-		return TextureMapper.iconMap.get(iconKey);
+		return (IICon)TextureMapper.iconMap.get(iconKey);
 	}
 	
 	@Override
@@ -88,8 +88,8 @@ public class BaseBlock extends Block {
 	@Override
 	public boolean isOpaqueCube() {
 		// The Block Constructor is calling this before the data is set //
-		if (data == null) return false;
-		return data.isOpaque();
+		if (this.data == null) return false;
+		return this.data.isOpaque();
 	}
 	
 	/** This is called by the BlockMaker to set the opacity after data initialization */
@@ -99,22 +99,22 @@ public class BaseBlock extends Block {
 	
 	@Override
 	public boolean renderAsNormalBlock() {
-        return data.renderAsNormalBlock();
+        return this.data.renderAsNormalBlock();
     }
 	
 	@Override
 	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
-		return data.shouldSideBeRenderedRaw(world, x, y, z, side);
+		return this.data.shouldSideBeRenderedRaw(world, x, y, z, side);
 	}
 	
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
-		data.setBlockBoundsBasedOnState(world, x, y, z);
+		this.data.setBlockBoundsBasedOnState(world, x, y, z);
 	}
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
-		if (data.hasCollisionBox()) {
+		if (this.data.hasCollisionBox()) {
 			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
 		}
 		else return null;
@@ -123,9 +123,9 @@ public class BaseBlock extends Block {
 	@Override
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity entity) {
 
-        if (!data.hasCollisionBox()) return;
+        if (!this.data.hasCollisionBox()) return;
 
-        ArrayList<AxisAlignedBB> boxes = data.getBoxes(world, x, y, z, WorldUtil.getBlockMeta(world, x, y, z));
+        ArrayList<AxisAlignedBB> boxes = data.getBoxes((IBlockAccess)world, x, y, z, WorldUtil.getBlockMeta((IBlockAccess)world, x, y, z));
 
 		if (boxes != null && !boxes.isEmpty()) {
 			for (AxisAlignedBB box : boxes) {
@@ -155,27 +155,27 @@ public class BaseBlock extends Block {
 	
 	@Override
 	public String getUnlocalizedName() {
-		return data.getUnlocalizedName();
+		return this.data.getUnlocalizedName();
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack stack) {
-		data.onBlockPlacedBy(world, x, y, z, player, stack);
+		this.data.onBlockPlacedBy(world, x, y, z, player, stack);
 	}
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float xHit, float yHit, float zHit) {
-		return data.onBlockActivated(world, x, y, z, player, side, xHit, yHit, zHit);
+		return this.data.onBlockActivated(world, x, y, z, player, side, xHit, yHit, zHit);
 	}
 	
 	@Override
 	public boolean isSideSolid(IBlockAccess world, int x, int y, int z,	ForgeDirection side) {
-		return data.isSideSolid(world, x, y, z, side.ordinal());
+		return this.data.isSideSolid(world, x, y, z, side.ordinal());
 	}
 	
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
-		return data.getLightValue(world, x, y, z);
+		return this.data.getLightValue(world, x, y, z);
 	}
 
 	@Override
@@ -187,7 +187,7 @@ public class BaseBlock extends Block {
 	
 	@Override
 	public int damageDropped(int damage) {
-		return data.damageDropped(damage);
+		return this.data.damageDropped(damage);
 	}
 	
 	@Override
@@ -199,17 +199,17 @@ public class BaseBlock extends Block {
 	
 	@Override
 	public boolean canDropFromExplosion(Explosion explosion) {
-		return super.canDropFromExplosion(explosion) && data.canDropFromExplosion();
+		return super.canDropFromExplosion(explosion) && this.data.canDropFromExplosion();
 	}
 	
 	@Override
 	public void onBlockHarvested(World world, int x, int y, int z, int fortune, EntityPlayer player) {
-		data.onBlockHarvested(world, x, y, z, fortune, player);
+		this.data.onBlockHarvested(world, x, y, z, fortune, player);
 	}
 	
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-		data.onNeighborBlockChange(world, x, y, z, block);
+		this.data.onNeighborBlockChange(world, x, y, z, block);
 	}
 	
 	@Override
@@ -219,32 +219,32 @@ public class BaseBlock extends Block {
 	
 	@Override
 	public int getRenderBlockPass() {
-		return data.getRenderPass();
+		return this.data.getRenderPass();
 	}
 	
 	@Override
 	public int isProvidingWeakPower(IBlockAccess world, int x, int y, int z, int side) {
-		return data.getWeakPower(world, x, y, z, side);
+		return this.data.getWeakPower(world, x, y, z, side);
 	}
 	
 	@Override
 	public int isProvidingStrongPower(IBlockAccess world, int x, int y, int z, int side) {
-		return data.getStrongPower(world, x, y, z, side);
+		return this.data.getStrongPower(world, x, y, z, side);
 	}
 
 	@Override
 	public boolean shouldCheckWeakPower(IBlockAccess world, int x, int y, int z, int side) {
-		return data.shouldCheckWeakPower(world, x, y, z, side);
+		return this.data.shouldCheckWeakPower(world, x, y, z, side);
 	}
 	
 	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
-		return super.canPlaceBlockAt(world, x, y, z) && data.canPlaceBlockAt(world, x, y, z);
+		return super.canPlaceBlockAt(world, x, y, z) && this.data.canPlaceBlockAt(world, x, y, z);
 	}
 	
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) {
-		data.onBlockDestroyedByPlayer(world, x, y, z, meta);
+		this.data.onBlockDestroyedByPlayer(world, x, y, z, meta);
 	}
 	
 	@Override

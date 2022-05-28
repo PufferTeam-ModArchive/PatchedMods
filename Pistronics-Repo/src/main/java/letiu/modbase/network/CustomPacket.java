@@ -2,18 +2,18 @@ package letiu.modbase.network;
 
 import io.netty.buffer.ByteBuf;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.relauncher.Side;
+import io.netty.buffer.ByteBuf;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
 import letiu.modbase.core.ModClass;
 import net.minecraft.entity.player.EntityPlayer;
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import cpw.mods.fml.relauncher.Side;
 
 public class CustomPacket<T extends CustomPacket<T>> implements IMessage, IMessageHandler<T, IMessage> {
 	

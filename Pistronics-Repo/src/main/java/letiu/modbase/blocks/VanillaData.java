@@ -14,6 +14,7 @@ public class VanillaData {
 		materialData.put("iron", Material.iron);
 		materialData.put("rock", Material.rock);
 		materialData.put("cloth", Material.cloth);
+		materialData.put("sand", Material.sand);
 	}
 	
 }

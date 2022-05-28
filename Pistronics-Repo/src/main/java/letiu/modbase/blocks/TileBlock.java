@@ -14,7 +14,7 @@ public class TileBlock extends BaseBlock implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return TileMaker.makeTile(data.createPTile());
+		return (TileEntity)TileMaker.makeTile(this.data.createPTile());
 	}
 
 }

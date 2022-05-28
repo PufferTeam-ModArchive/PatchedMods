@@ -1,6 +1,7 @@
 package letiu.modbase.render;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import letiu.modbase.render.FakeWorld;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAnvil;
 import net.minecraft.block.BlockBeacon;
@@ -23,7 +24,6 @@ import net.minecraft.block.BlockRedstoneRepeater;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockWall;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.src.FMLRenderAccessLibrary;
 import net.minecraft.world.IBlockAccess;
 
 public class CustomRenderBlocks extends RenderBlocks {

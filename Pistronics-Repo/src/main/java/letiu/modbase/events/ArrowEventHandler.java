@@ -2,16 +2,18 @@ package letiu.modbase.events;
 
 import java.util.ArrayList;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import java.util.ArrayList;
+import letiu.modbase.events.IArrowEventListener;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ArrowEventHandler {
 	
 	private ArrayList<IArrowEventListener> listeners = new ArrayList<IArrowEventListener>();
 	
 	public void addListener(IArrowEventListener listener) {
-		listeners.add(listener);		
+		this.listeners.add(listener);
 	}
 	
 	@SubscribeEvent
