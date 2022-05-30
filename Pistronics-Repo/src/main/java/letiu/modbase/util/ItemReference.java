@@ -4,6 +4,7 @@ import com.dunk.tfc.api.TFCItems;
 import letiu.pistronics.config.ConfigData;
 import letiu.pistronics.items.ItemSpade;
 import letiu.pistronics.util.BlockProxy;
+import cpw.mods.fml.common.Loader;
 import net.minecraft.block.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -16,7 +17,10 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemReference {
 
+	public static boolean isTFCLoaded = Loader.isModLoaded("terrafirmacraftplus");
+
 	public static final Item SLIME = Items.slime_ball;
+
 	public static final Block REDSTONE_TORCH = Blocks.redstone_torch;
 	public static final Block REDSTONE_BLOCK = Blocks.redstone_block;
 	
@@ -41,10 +45,15 @@ public class ItemReference {
 	public static final Item WHEAT_SEEDS = Items.wheat_seeds;
 	public static final Item COMPARATOR = Items.comparator;
 	public static final Item DIAMOND = Items.diamond;
-	
-	public static final Item BOW = Items.bow;
-	public static final Item ARROW = Items.arrow;
-	
+
+	if(isTFCLoaded) {
+		public static final Item BOW = TFCItems.bow;
+		public static final Item ARROW = TFCItems.arrow;
+	} else {
+		public static final Item BOW = Items.bow;
+		public static final Item ARROW = Items.arrow;
+	}
+
 	public static final Item ROTTEN_FLESH = Items.rotten_flesh;
 	public static final Item POISONOUS_POTATO = Items.poisonous_potato;
 	public static final Item SPIDER_EYE = Items.spider_eye;
@@ -55,7 +64,7 @@ public class ItemReference {
 	public static final Item MILK = Items.milk_bucket;
 	
 	public static final Item BOOK = Items.book;
-	
+
 	public static boolean isDye(ItemStack stack, int color) {
 		if (stack == null) return false;
 		switch (color) {
@@ -86,11 +95,15 @@ public class ItemReference {
 		}
 		return -1;
 	}
-	
+
 	public static ItemStack getDye(int dmg) {
-		return new ItemStack(TFCItems.dye, 1, dmg);
+		if(isTFCLoaded) {
+			return new ItemStack(TFCItems.dye, 1, dmg);
+		} else {
+			return new ItemStack(Items.dye, 1, dmg);
+		}
 	}
-	
+
 	public static boolean isHarvestTool(ItemStack stack) {
 		if (stack == null) return false;
 		Item item = stack.getItem();
