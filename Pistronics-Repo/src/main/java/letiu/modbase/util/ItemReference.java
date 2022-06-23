@@ -46,13 +46,8 @@ public class ItemReference {
 	public static final Item COMPARATOR = Items.comparator;
 	public static final Item DIAMOND = Items.diamond;
 
-	if(isTFCLoaded) {
-		public static final Item BOW = TFCItems.bow;
-		public static final Item ARROW = TFCItems.arrow;
-	} else {
-		public static final Item BOW = Items.bow;
-		public static final Item ARROW = Items.arrow;
-	}
+	public static final Item BOW = TFCItems.bow;
+	public static final Item ARROW = TFCItems.arrow;
 
 	public static final Item ROTTEN_FLESH = Items.rotten_flesh;
 	public static final Item POISONOUS_POTATO = Items.poisonous_potato;

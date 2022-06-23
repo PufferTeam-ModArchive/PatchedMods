@@ -1,29 +1,35 @@
 package letiu.pistronics.piston;
 
 public class SystemController {
+	private MoveData moveData;
 
-	public SystemController() {
-		
+	private String key;
+
+	public SystemController(MoveData moveData) {
+		this.moveData = moveData;
 	}
-	
-//	private ArrayList<IMover> movers;
-//	
-//	public SystemController() {
-//		movers = new ArrayList<IMover>();
-//	}
-//	
-//	public void addMover(IMover mover) {
-//		movers.add(mover);
-//	}
-//	
-//	public void updateAll(float progress) {
-//		
-//		System.out.println("updating " + movers.size() + " Blocks.");
-//		
-//		for (IMover mover : movers) {
-//			mover.setProgress(progress);
-//		}
-//	}
 
-	
+	public boolean update(ControllerData data) {
+		boolean result = false;
+		if (data.lastValue == this.moveData.getValue()) {
+			this.moveData.update();
+			result = true;
+		}
+		data.lastValue = this.moveData.getValue();
+		if (this.moveData.isDone())
+			ControllerRegistry.remove(this.key);
+		return result;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public String getKey() {
+		return this.key;
+	}
+
+	public MoveData getMoveData() {
+		return this.moveData;
+	}
 }
