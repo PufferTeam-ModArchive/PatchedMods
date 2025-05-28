@@ -2,5 +2,5 @@ package letiu.pistronics.tiles;
 
 public interface IMover {
 
-	public void setProgress(float progress);
+    public void setProgress(float progress);
 }

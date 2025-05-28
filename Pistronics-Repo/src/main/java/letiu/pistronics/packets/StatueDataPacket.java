@@ -1,18 +1,16 @@
 package letiu.pistronics.packets;
 
-import cpw.mods.fml.relauncher.Side;
-import letiu.modbase.util.WorldUtil;
-import letiu.pistronics.blocks.BGear;
-import letiu.pistronics.data.PTile;
-import letiu.pistronics.tiles.TileGear;
-import letiu.pistronics.tiles.TileStatue;
-import letiu.pistronics.util.Vector3;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import letiu.modbase.util.WorldUtil;
+import letiu.pistronics.data.PTile;
+import letiu.pistronics.tiles.TileStatue;
 
 public class StatueDataPacket extends LocationPacket<StatueDataPacket> {
 

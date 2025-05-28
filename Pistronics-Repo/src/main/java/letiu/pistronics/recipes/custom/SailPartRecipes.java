@@ -1,5 +1,9 @@
 package letiu.pistronics.recipes.custom;
 
+import java.util.ArrayList;
+
+import net.minecraft.item.ItemStack;
+
 import letiu.modbase.util.BlockItemUtil;
 import letiu.modbase.util.CompareUtil;
 import letiu.modbase.util.ItemReference;
@@ -7,14 +11,7 @@ import letiu.pistronics.data.BlockData;
 import letiu.pistronics.data.ItemData;
 import letiu.pistronics.recipes.PRecipeRegistry;
 import letiu.pistronics.recipes.PShapelessRecipe;
-import letiu.pistronics.tiles.TileSail;
 import letiu.pistronics.util.SailUtil;
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.world.World;
-
-import java.util.ArrayList;
 
 public class SailPartRecipes {
 
@@ -55,7 +52,12 @@ public class SailPartRecipes {
                     if (camou) {
                         ItemStack nonCamouStack = coloredStack.copy();
                         nonCamouStack.stackTagCompound.setBoolean("camou", false);
-                        recipes.add(new PShapelessRecipe(result1, nonCamouStack, ItemReference.getDye(15 - sailColor), BlockItemUtil.getStack(ItemData.camoupaste)));
+                        recipes.add(
+                            new PShapelessRecipe(
+                                result1,
+                                nonCamouStack,
+                                ItemReference.getDye(15 - sailColor),
+                                BlockItemUtil.getStack(ItemData.camoupaste)));
                     }
                 }
             }

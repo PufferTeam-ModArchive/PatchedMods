@@ -1,11 +1,13 @@
 package letiu.pistronics.piston;
 
-import letiu.pistronics.util.Vector3;
-import letiu.pistronics.util.VectorUtil;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 
+import letiu.pistronics.util.Vector3;
+import letiu.pistronics.util.VectorUtil;
+
 public class MoveData {
+
     public int rotateDir;
 
     public int moveDir;
@@ -47,12 +49,11 @@ public class MoveData {
     }
 
     public void update() {
-        if (!isDone())
-            if (isRotating()) {
-                this.angle += this.rotateSpeed;
-            } else if (isMoving()) {
-                this.progress += this.moveSpeed;
-            }
+        if (!isDone()) if (isRotating()) {
+            this.angle += this.rotateSpeed;
+        } else if (isMoving()) {
+            this.progress += this.moveSpeed;
+        }
     }
 
     public boolean isDone() {
@@ -78,8 +79,7 @@ public class MoveData {
         nbt.setFloat("progress", this.progress);
         nbt.setFloat("rotateSpeed", this.rotateSpeed);
         nbt.setFloat("moveSpeed", this.moveSpeed);
-        if (this.rotatePoint != null)
-            nbt.setTag("rotatePoint", (NBTBase)VectorUtil.writeToNBT(this.rotatePoint));
+        if (this.rotatePoint != null) nbt.setTag("rotatePoint", (NBTBase) VectorUtil.writeToNBT(this.rotatePoint));
     }
 
     public void readFromNBT(NBTTagCompound nbt) {
@@ -89,7 +89,6 @@ public class MoveData {
         this.rotateSpeed = nbt.getFloat("rotateSpeed");
         this.moveSpeed = nbt.getFloat("moveSpeed");
         this.progress = nbt.getFloat("progress");
-        if (nbt.hasKey("rotatePoint"))
-            this.rotatePoint = VectorUtil.readFromNBT(nbt.getCompoundTag("rotatePoint"));
+        if (nbt.hasKey("rotatePoint")) this.rotatePoint = VectorUtil.readFromNBT(nbt.getCompoundTag("rotatePoint"));
     }
 }

@@ -1,10 +1,12 @@
 package letiu.pistronics.piston;
 
 import java.util.HashMap;
+
 import letiu.pistronics.util.BlockProxy;
 import letiu.pistronics.util.Vector3;
 
 public class ControllerRegistry {
+
     private static HashMap<String, SystemController> mapClient = new HashMap<String, SystemController>();
 
     private static HashMap<String, SystemController> mapServer = new HashMap<String, SystemController>();
@@ -25,8 +27,7 @@ public class ControllerRegistry {
 
     public static SystemController find(String key) {
         SystemController controller = mapServer.get(key);
-        if (controller == null)
-            controller = mapClient.get(key);
+        if (controller == null) controller = mapClient.get(key);
         return controller;
     }
 

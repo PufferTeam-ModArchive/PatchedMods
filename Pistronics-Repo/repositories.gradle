@@ -2,13 +2,7 @@
 
 repositories {
     maven {
-        name = "GTNH"
-        url = "http://jenkins.usrv.eu:8081/nexus/content/groups/public/"
-    }
-    maven {
-        url "https://cursemaven.com"
-    }
-    maven {
-        url = "https://jitpack.io"
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
     }
 }

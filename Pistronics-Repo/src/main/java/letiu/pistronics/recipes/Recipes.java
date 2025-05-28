@@ -22,144 +22,212 @@ public class Recipes {
         registerNormalRecipes();
     }
 
-	public static void registerNormalRecipes() {
+    public static void registerNormalRecipes() {
 
-    	// Patched Recipes //
-/*
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.piston),
-				"SSS", "GPG", "JRJ",
-				'S', ItemReference.WOODEN_SLAB,
-				'P', ItemReference.PISTON,
-				'J', ItemReference.PLANKS,
-				'R', ItemReference.REDSTONE_ITEM,
-				'G', BlockData.gear.block);
+        // Patched Recipes //
+        /*
+         * RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.piston),
+         * "SSS", "GPG", "JRJ",
+         * 'S', ItemReference.WOODEN_SLAB,
+         * 'P', ItemReference.PISTON,
+         * 'J', ItemReference.PLANKS,
+         * 'R', ItemReference.REDSTONE_ITEM,
+         * 'G', BlockData.gear.block);
+         * RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.rotator),
+         * "SSS", "PGP", "JRJ",
+         * 'S', ItemReference.WOODEN_SLAB,
+         * 'P', ItemReference.PISTON,
+         * 'J', ItemReference.PLANKS,
+         * 'R', ItemReference.REDSTONE_ITEM,
+         * 'G', BlockData.gear.block);
+         * RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.rodFolder),
+         * "SPS", "G G", "JJJ",
+         * 'S', ItemReference.WOODEN_SLAB,
+         * 'P', ItemReference.TRAP_DOOR,
+         * 'J', ItemReference.PLANKS,
+         * 'G', BlockData.gear.block);
+         * if (ConfigData.creativeMachineRecipe) {
+         * RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.creativeMachine),
+         * "SSS", "GPG", "JRJ",
+         * 'S', ItemReference.IRON_INGOT,
+         * 'P', ItemReference.PISTON,
+         * 'J', ItemReference.DIAMOND,
+         * 'R', ItemReference.REDSTONE_ITEM,
+         * 'G', BlockData.gear.block);
+         * }
+         */
 
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.rotator),
-				"SSS", "PGP", "JRJ",
-				'S', ItemReference.WOODEN_SLAB,
-				'P', ItemReference.PISTON,
-				'J', ItemReference.PLANKS,
-				'R', ItemReference.REDSTONE_ITEM,
-				'G', BlockData.gear.block);
+        /// Blocks ///
 
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.rodFolder),
-				"SPS", "G G", "JJJ",
-				'S', ItemReference.WOODEN_SLAB,
-				'P', ItemReference.TRAP_DOOR,
-				'J', ItemReference.PLANKS,
-				'G', BlockData.gear.block);
+        RecipeUtil.addShapedRecipe(
+            BlockItemUtil.getStack(BlockData.camouBlock),
+            "AAA",
+            "AAA",
+            "AAA",
+            'A',
+            ItemData.camoupaste.item);
 
-		if (ConfigData.creativeMachineRecipe) {
-
-			RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.creativeMachine),
-				"SSS", "GPG", "JRJ",
-				'S', ItemReference.IRON_INGOT,
-				'P', ItemReference.PISTON,
-				'J', ItemReference.DIAMOND,
-				'R', ItemReference.REDSTONE_ITEM,
-				'G', BlockData.gear.block);
-		}
- */
-
-		/// Blocks ///
-
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.camouBlock), 
-				"AAA", "AAA", "AAA", 
-				'A', ItemData.camoupaste.item);
-
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(BlockData.stopper, 4, 0),
-				"ABA", "BCB", "ABA",
-				'A', ItemReference.STICK,
-				'B', ItemReference.OBSIDIAN,
-				'C', ItemReference.COBBLE);
+        RecipeUtil.addShapedRecipe(
+            BlockItemUtil.getStack(BlockData.stopper, 4, 0),
+            "ABA",
+            "BCB",
+            "ABA",
+            'A',
+            ItemReference.STICK,
+            'B',
+            ItemReference.OBSIDIAN,
+            'C',
+            ItemReference.COBBLE);
 
         if (!ConfigData.alternateSlimeblockRecipe) {
-            RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.slimeblock, 1, 0),
-                    "AA", "AA",
-                    'A', ItemReference.SLIME);
+            RecipeUtil.addShapedRecipe(
+                BlockItemUtil.getStack(ItemData.slimeblock, 1, 0),
+                "AA",
+                "AA",
+                'A',
+                ItemReference.SLIME);
 
-            RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.slimeblock, 1, 1),
-                    "AA", "AA",
-                    'A', ItemData.glue.item);
+            RecipeUtil.addShapedRecipe(
+                BlockItemUtil.getStack(ItemData.slimeblock, 1, 1),
+                "AA",
+                "AA",
+                'A',
+                ItemData.glue.item);
 
-            RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.slimeblock, 1, 2),
-                    "AA", "AA",
-                    'A', ItemData.super_glue.item);
+            RecipeUtil.addShapedRecipe(
+                BlockItemUtil.getStack(ItemData.slimeblock, 1, 2),
+                "AA",
+                "AA",
+                'A',
+                ItemData.super_glue.item);
+        } else {
+            RecipeUtil.addShapedRecipe(
+                BlockItemUtil.getStack(ItemData.slimeblock, 1, 0),
+                " A ",
+                "A A",
+                " A ",
+                'A',
+                ItemReference.SLIME);
+
+            RecipeUtil.addShapedRecipe(
+                BlockItemUtil.getStack(ItemData.slimeblock, 1, 1),
+                " A ",
+                "A A",
+                " A ",
+                'A',
+                ItemData.glue.item);
+
+            RecipeUtil.addShapedRecipe(
+                BlockItemUtil.getStack(ItemData.slimeblock, 1, 2),
+                " A ",
+                "A A",
+                " A ",
+                'A',
+                ItemData.super_glue.item);
         }
-        else {
-            RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.slimeblock, 1, 0),
-                    " A ", "A A", " A ",
-                    'A', ItemReference.SLIME);
 
-            RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.slimeblock, 1, 1),
-                    " A ", "A A", " A ",
-                    'A', ItemData.glue.item);
+        /// Items ///
 
-            RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.slimeblock, 1, 2),
-                    " A ", "A A", " A ",
-                    'A', ItemData.super_glue.item);
-        }
+        RecipeUtil.addShapedRecipe(
+            BlockItemUtil.getStack(ItemData.bookOfGears),
+            " A ",
+            "ABA",
+            " A ",
+            'A',
+            ItemReference.STICK,
+            'B',
+            ItemReference.BOOK);
 
-		/// Items ///
-		
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.bookOfGears), 
-				" A ", "ABA", " A ", 
-				'A', ItemReference.STICK,
-				'B', ItemReference.BOOK);
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemReference.REDSTONE_ITEM),
+            ItemData.pileOfRedstone.item,
+            ItemData.pileOfRedstone.item);
 
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemReference.REDSTONE_ITEM),
-				ItemData.pileOfRedstone.item, ItemData.pileOfRedstone.item);
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.pileOfRedstone, 2, 0),
-				ItemReference.REDSTONE_ITEM);
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.camoupaste, 2, 0),
-				ItemReference.NETHER_WART, ItemReference.getDye(1), ItemReference.getDye(2), ItemReference.getDye(4));
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.camoupaste, 9, 0),
-				BlockData.camouBlock.block);
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.glue),
-				ItemReference.WHEAT_SEEDS, ItemReference.WHEAT_SEEDS,
-				ItemReference.SUGAR, ItemReference.getDye(15));
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.super_glue),
-				ItemData.glue.item, ItemReference.getDye(1));
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemReference.SLIME, 4, 0),
-				BlockItemUtil.getStack(ItemData.slimeblock, 1, 0));
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.glue, 4, 0),
-				BlockItemUtil.getStack(ItemData.slimeblock, 1, 1));
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.super_glue, 4, 0),
-				BlockItemUtil.getStack(ItemData.slimeblock, 1, 2));
-		
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.redioGlue), 
-				" A ", "ABA", " A ",
-				'A', ItemData.pileOfRedstone.item,
-				'B', ItemData.glue.item);
-		
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.redioGlue), 
-				" A ", "ABA", " A ",
-				'A', ItemData.pileOfRedstone.item,
-				'B', ItemReference.SLIME);
-		
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.redioSuperGlue), 
-				" A ", "ABA", " A ",
-				'A', ItemData.pileOfRedstone.item,
-				'B', ItemData.super_glue.item);
-		
-		RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.redioSuperGlue),
-				ItemData.redioGlue.item, ItemReference.getDye(1));
-		
-		RecipeUtil.addShapedRecipe(BlockItemUtil.getStack(ItemData.petrifyExtract, 2, 0),
-				"AAA", "ABA", "AAA",
-				'A', ItemReference.STONE,
-				'B', BlockItemUtil.getStack(ItemReference.POTION, 1, PotionReference.LONG_POSION));
+        RecipeUtil
+            .addShapelessRecipe(BlockItemUtil.getStack(ItemData.pileOfRedstone, 2, 0), ItemReference.REDSTONE_ITEM);
 
-        RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.petrifyArrow),
-				ItemData.petrifyExtract.item, ItemReference.ARROW);
-	}
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemData.camoupaste, 2, 0),
+            ItemReference.NETHER_WART,
+            ItemReference.getDye(1),
+            ItemReference.getDye(2),
+            ItemReference.getDye(4));
+
+        RecipeUtil.addShapelessRecipe(BlockItemUtil.getStack(ItemData.camoupaste, 9, 0), BlockData.camouBlock.block);
+
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemData.glue),
+            ItemReference.WHEAT_SEEDS,
+            ItemReference.WHEAT_SEEDS,
+            ItemReference.SUGAR,
+            ItemReference.getDye(15));
+
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemData.super_glue),
+            ItemData.glue.item,
+            ItemReference.getDye(1));
+
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemReference.SLIME, 4, 0),
+            BlockItemUtil.getStack(ItemData.slimeblock, 1, 0));
+
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemData.glue, 4, 0),
+            BlockItemUtil.getStack(ItemData.slimeblock, 1, 1));
+
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemData.super_glue, 4, 0),
+            BlockItemUtil.getStack(ItemData.slimeblock, 1, 2));
+
+        RecipeUtil.addShapedRecipe(
+            BlockItemUtil.getStack(ItemData.redioGlue),
+            " A ",
+            "ABA",
+            " A ",
+            'A',
+            ItemData.pileOfRedstone.item,
+            'B',
+            ItemData.glue.item);
+
+        RecipeUtil.addShapedRecipe(
+            BlockItemUtil.getStack(ItemData.redioGlue),
+            " A ",
+            "ABA",
+            " A ",
+            'A',
+            ItemData.pileOfRedstone.item,
+            'B',
+            ItemReference.SLIME);
+
+        RecipeUtil.addShapedRecipe(
+            BlockItemUtil.getStack(ItemData.redioSuperGlue),
+            " A ",
+            "ABA",
+            " A ",
+            'A',
+            ItemData.pileOfRedstone.item,
+            'B',
+            ItemData.super_glue.item);
+
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemData.redioSuperGlue),
+            ItemData.redioGlue.item,
+            ItemReference.getDye(1));
+
+        RecipeUtil.addShapedRecipe(
+            BlockItemUtil.getStack(ItemData.petrifyExtract, 2, 0),
+            "AAA",
+            "ABA",
+            "AAA",
+            'A',
+            ItemReference.STONE,
+            'B',
+            BlockItemUtil.getStack(ItemReference.POTION, 1, PotionReference.LONG_POSION));
+
+        RecipeUtil.addShapelessRecipe(
+            BlockItemUtil.getStack(ItemData.petrifyArrow),
+            ItemData.petrifyExtract.item,
+            ItemReference.ARROW);
+    }
 
 }

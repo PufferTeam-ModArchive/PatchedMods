@@ -5,8 +5,10 @@ import letiu.pistronics.util.BlockProxy;
 
 public interface IPistonElement {
 
-	public void getConnectedForSystem(PistonSystem system, BlockProxy proxy, boolean strongConnection);
-	public boolean connectsToSide(BlockProxy proxy, int side, SystemType type);
-	public boolean isTransmitter(BlockProxy proxy);
-	
+    public void getConnectedForSystem(PistonSystem system, BlockProxy proxy, boolean strongConnection);
+
+    public boolean connectsToSide(BlockProxy proxy, int side, SystemType type);
+
+    public boolean isTransmitter(BlockProxy proxy);
+
 }

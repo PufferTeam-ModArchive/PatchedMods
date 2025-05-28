@@ -5,6 +5,7 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 public interface IArrowEventListener {
 
-	public void handleNockEvent(ArrowNockEvent event);
-	public void handleLooseEvent(ArrowLooseEvent event);
+    public void handleNockEvent(ArrowNockEvent event);
+
+    public void handleLooseEvent(ArrowLooseEvent event);
 }

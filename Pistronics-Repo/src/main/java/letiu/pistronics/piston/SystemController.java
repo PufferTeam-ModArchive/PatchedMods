@@ -1,35 +1,35 @@
 package letiu.pistronics.piston;
 
 public class SystemController {
-	private MoveData moveData;
 
-	private String key;
+    private MoveData moveData;
 
-	public SystemController(MoveData moveData) {
-		this.moveData = moveData;
-	}
+    private String key;
 
-	public boolean update(ControllerData data) {
-		boolean result = false;
-		if (data.lastValue == this.moveData.getValue()) {
-			this.moveData.update();
-			result = true;
-		}
-		data.lastValue = this.moveData.getValue();
-		if (this.moveData.isDone())
-			ControllerRegistry.remove(this.key);
-		return result;
-	}
+    public SystemController(MoveData moveData) {
+        this.moveData = moveData;
+    }
 
-	public void setKey(String key) {
-		this.key = key;
-	}
+    public boolean update(ControllerData data) {
+        boolean result = false;
+        if (data.lastValue == this.moveData.getValue()) {
+            this.moveData.update();
+            result = true;
+        }
+        data.lastValue = this.moveData.getValue();
+        if (this.moveData.isDone()) ControllerRegistry.remove(this.key);
+        return result;
+    }
 
-	public String getKey() {
-		return this.key;
-	}
+    public void setKey(String key) {
+        this.key = key;
+    }
 
-	public MoveData getMoveData() {
-		return this.moveData;
-	}
+    public String getKey() {
+        return this.key;
+    }
+
+    public MoveData getMoveData() {
+        return this.moveData;
+    }
 }

@@ -1,34 +1,36 @@
 package letiu.pistronics.data;
 
-import letiu.modbase.tiles.BaseTile;
-import letiu.modbase.util.NBTUtil;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 
+import letiu.modbase.tiles.BaseTile;
+import letiu.modbase.util.NBTUtil;
+
 public abstract class PTile {
-	public BaseTile tileEntity;
 
-	public abstract String getKey();
+    public BaseTile tileEntity;
 
-	public void readFromNBT(NBTTagCompound tagCompound) {}
+    public abstract String getKey();
 
-	public void writeToNBT(NBTTagCompound tagCompound) {}
+    public void readFromNBT(NBTTagCompound tagCompound) {}
 
-	public void update() {}
+    public void writeToNBT(NBTTagCompound tagCompound) {}
 
-	public void postLoad() {}
+    public void update() {}
 
-	public boolean hasInventory() {
-		return false;
-	}
+    public void postLoad() {}
 
-	public NBTTagCompound getNBTForItem() {
-		NBTTagCompound nbt = NBTUtil.getNewCompound();
-		writeToNBT(nbt);
-		return nbt;
-	}
+    public boolean hasInventory() {
+        return false;
+    }
 
-	public AxisAlignedBB getRenderBoundingBox() {
-		return null;
-	}
+    public NBTTagCompound getNBTForItem() {
+        NBTTagCompound nbt = NBTUtil.getNewCompound();
+        writeToNBT(nbt);
+        return nbt;
+    }
+
+    public AxisAlignedBB getRenderBoundingBox() {
+        return null;
+    }
 }

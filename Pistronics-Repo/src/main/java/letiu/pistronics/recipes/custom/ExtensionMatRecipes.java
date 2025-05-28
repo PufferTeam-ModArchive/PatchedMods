@@ -1,5 +1,11 @@
 package letiu.pistronics.recipes.custom;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+
 import letiu.modbase.util.BlockItemUtil;
 import letiu.modbase.util.CompareUtil;
 import letiu.modbase.util.ItemReference;
@@ -8,16 +14,7 @@ import letiu.pistronics.data.BlockData;
 import letiu.pistronics.data.ItemData;
 import letiu.pistronics.recipes.PRecipeRegistry;
 import letiu.pistronics.recipes.PShapelessRecipe;
-import letiu.pistronics.tiles.TileExtension;
 import letiu.pistronics.util.ExtensionUtil;
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ExtensionMatRecipes {
 
@@ -48,7 +45,8 @@ public class ExtensionMatRecipes {
     public static ArrayList<PShapelessRecipe> getRecipesForCrafting(ItemStack result) {
         ArrayList<PShapelessRecipe> recipes = new ArrayList<PShapelessRecipe>();
 
-        if (CompareUtil.compareIDs(result, BlockData.extension.block) || CompareUtil.compareIDs(result, BlockData.extensionPart.block)) {
+        if (CompareUtil.compareIDs(result, BlockData.extension.block)
+            || CompareUtil.compareIDs(result, BlockData.extensionPart.block)) {
 
             if (CompareUtil.compareIDs(result, BlockData.extension.block)) {
                 recipes.add(getUpgradeRecipe(result));
@@ -83,28 +81,23 @@ public class ExtensionMatRecipes {
         if ((ingrData & REDSTONE) != 0) {
             if (CompareUtil.compareIDs(result, BlockData.extensionPart.block)) {
                 recipe.addIngredient(BlockItemUtil.getStack(ItemData.pileOfRedstone));
-            }
-            else recipe.addIngredient(BlockItemUtil.getStack(ItemReference.REDSTONE_ITEM));
+            } else recipe.addIngredient(BlockItemUtil.getStack(ItemReference.REDSTONE_ITEM));
         }
         if ((ingrData & CAMOU) != 0) {
             recipe.addIngredient(BlockItemUtil.getStack(ItemData.camoupaste));
         }
         if ((ingrData & STICKY) == 0 && (ingrData & SUPER_STICKY) != 0) {
             recipe.addIngredient(BlockItemUtil.getStack(ItemData.super_glue));
-        }
-        else if ((ingrData & STICKY) != 0 && (ingrData & SUPER_STICKY) != 0) {
+        } else if ((ingrData & STICKY) != 0 && (ingrData & SUPER_STICKY) != 0) {
             if ((ingrData & REDIO) != 0) {
                 recipe.addIngredient(BlockItemUtil.getStack(ItemData.redioSuperGlue));
-            }
-            else {
+            } else {
                 recipe.addIngredient(BlockItemUtil.getStack(ItemData.super_glue));
             }
-        }
-        else if ((ingrData & STICKY) != 0) {
+        } else if ((ingrData & STICKY) != 0) {
             if ((ingrData & REDIO) != 0) {
                 recipe.addIngredient(BlockItemUtil.getStack(ItemData.redioGlue));
-            }
-            else {
+            } else {
                 PShapelessRecipe glue1 = recipe.copy();
                 glue1.addIngredient(BlockItemUtil.getStack(ItemData.glue));
                 recipes.add(glue1);

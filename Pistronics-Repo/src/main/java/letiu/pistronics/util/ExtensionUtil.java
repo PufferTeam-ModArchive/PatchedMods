@@ -1,11 +1,12 @@
 package letiu.pistronics.util;
 
+import java.util.ArrayList;
+
+import net.minecraft.item.ItemStack;
+
 import letiu.modbase.util.BlockItemUtil;
 import letiu.pistronics.blocks.BExtension;
 import letiu.pistronics.data.BlockData;
-import net.minecraft.item.ItemStack;
-
-import java.util.ArrayList;
 
 public class ExtensionUtil {
 
@@ -93,11 +94,21 @@ public class ExtensionUtil {
 
     public static void setStat(ItemStack stack, int index, boolean value) {
         switch (index) {
-            case 0: stack.stackTagCompound.setBoolean("sticky", value); return;
-            case 1: stack.stackTagCompound.setBoolean("super_sticky", value); return;
-            case 2: stack.stackTagCompound.setBoolean("redstone", value); return;
-            case 3: stack.stackTagCompound.setBoolean("camou", value); return;
-            case 4: stack.stackTagCompound.setBoolean("redio", value); return;
+            case 0:
+                stack.stackTagCompound.setBoolean("sticky", value);
+                return;
+            case 1:
+                stack.stackTagCompound.setBoolean("super_sticky", value);
+                return;
+            case 2:
+                stack.stackTagCompound.setBoolean("redstone", value);
+                return;
+            case 3:
+                stack.stackTagCompound.setBoolean("camou", value);
+                return;
+            case 4:
+                stack.stackTagCompound.setBoolean("redio", value);
+                return;
         }
     }
 }

@@ -4,5 +4,5 @@ import letiu.pistronics.render.PTileRenderer;
 
 public interface ISpecialRenderTile {
 
-	public PTileRenderer getRenderer(); 
+    public PTileRenderer getRenderer();
 }

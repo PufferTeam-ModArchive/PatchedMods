@@ -1,6 +1,6 @@
 package letiu.modbase.util;
 
-import com.dunk.tfc.api.TFCItems;
+import ganymedes01.etfuturum.ModItems;
 import letiu.pistronics.config.ConfigData;
 import letiu.pistronics.items.ItemSpade;
 import letiu.pistronics.util.BlockProxy;
@@ -16,9 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemReference {
-
-	public static boolean isTFCLoaded = Loader.isModLoaded("terrafirmacraftplus");
-
 	public static final Item SLIME = Items.slime_ball;
 
 	public static final Block REDSTONE_TORCH = Blocks.redstone_torch;
@@ -45,9 +42,6 @@ public class ItemReference {
 	public static final Item WHEAT_SEEDS = Items.wheat_seeds;
 	public static final Item COMPARATOR = Items.comparator;
 	public static final Item DIAMOND = Items.diamond;
-
-	public static final Item BOW = TFCItems.bow;
-	public static final Item ARROW = TFCItems.arrow;
 
 	public static final Item ROTTEN_FLESH = Items.rotten_flesh;
 	public static final Item POISONOUS_POTATO = Items.poisonous_potato;
@@ -92,8 +86,14 @@ public class ItemReference {
 	}
 
 	public static ItemStack getDye(int dmg) {
-		if(isTFCLoaded) {
-			return new ItemStack(TFCItems.dye, 1, dmg);
+		if(dmg == 4) {
+			return ModItems.DYE.newItemStack(1, 1);
+		} else if (dmg == 15) {
+			return ModItems.DYE.newItemStack();
+		} else if (dmg == 3) {
+			return ModItems.DYE.newItemStack(1, 2);
+		} else if (dmg == 0) {
+			return ModItems.DYE.newItemStack(1, 3);
 		} else {
 			return new ItemStack(Items.dye, 1, dmg);
 		}

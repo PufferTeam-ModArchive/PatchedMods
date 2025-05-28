@@ -6,11 +6,11 @@ import net.minecraft.inventory.Container;
 
 public abstract class GuiPContainer extends GuiContainer {
 
-	public GuiPContainer(Container par1Container) {
-		super(par1Container);
-	}
+    public GuiPContainer(Container par1Container) {
+        super(par1Container);
+    }
 
-	protected FontRenderer getFontRenderer() {
-		return fontRendererObj;
-	}
+    protected FontRenderer getFontRenderer() {
+        return fontRendererObj;
+    }
 }
