@@ -1,2 +1,2 @@
-# Patched Mods
-All the mods patched for the Telomerase modpack
+# Pistronics 2
+Patched version of Pistronics 2.
