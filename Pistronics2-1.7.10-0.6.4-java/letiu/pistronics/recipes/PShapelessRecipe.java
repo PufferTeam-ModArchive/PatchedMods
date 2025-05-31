@@ -1,10 +1,11 @@
 package letiu.pistronics.recipes;
 
-import letiu.modbase.util.CompareUtil;
+import java.util.ArrayList;
+
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 
-import java.util.ArrayList;
+import letiu.modbase.util.CompareUtil;
 
 public class PShapelessRecipe {
 

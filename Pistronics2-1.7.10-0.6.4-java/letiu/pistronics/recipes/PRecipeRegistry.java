@@ -1,14 +1,11 @@
 package letiu.pistronics.recipes;
 
-import letiu.pistronics.recipes.PShapelessRecipe;
+import java.util.ArrayList;
+
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-
-import java.util.ArrayList;
 
 public class PRecipeRegistry implements IRecipe {
 
@@ -26,7 +23,6 @@ public class PRecipeRegistry implements IRecipe {
     private PRecipeRegistry() {}
 
     private ArrayList<PShapelessRecipe> shapelessRecipes = new ArrayList<PShapelessRecipe>();
-
 
     public static void registerShapelessRecipe(PShapelessRecipe recipe) {
         instance().shapelessRecipes.add(recipe);
@@ -56,7 +52,6 @@ public class PRecipeRegistry implements IRecipe {
         return recipes;
     }
 
-
     @Override
     public boolean matches(InventoryCrafting inv, World world) {
         for (PShapelessRecipe recipe : shapelessRecipes) {
@@ -69,7 +64,7 @@ public class PRecipeRegistry implements IRecipe {
 
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {
-         for (PShapelessRecipe recipe : shapelessRecipes) {
+        for (PShapelessRecipe recipe : shapelessRecipes) {
             if (recipe.matches(inv)) {
                 return recipe.getResult();
             }

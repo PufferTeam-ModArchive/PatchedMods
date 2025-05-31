@@ -57,51 +57,32 @@ public class ItemReference {
 
     public static final Item BOOK = Items.book;
 
-    public static boolean isDye(ItemStack stack, int color) {
-        if (stack == null) return false;
-        switch (color) {
-            case 0:
-                return isOre(stack, "dyeWhite");
-            case 1:
-                return isOre(stack, "dyeOrange");
-            case 2:
-                return isOre(stack, "dyeMagenta");
-            case 3:
-                return isOre(stack, "dyeLightBlue");
-            case 4:
-                return isOre(stack, "dyeYellow");
-            case 5:
-                return isOre(stack, "dyeLime");
-            case 6:
-                return isOre(stack, "dyePink");
-            case 7:
-                return isOre(stack, "dyeGray");
-            case 8:
-                return isOre(stack, "dyeLightGray");
-            case 9:
-                return isOre(stack, "dyeCyan");
-            case 10:
-                return isOre(stack, "dyePurple");
-            case 11:
-                return isOre(stack, "dyeBlue");
-            case 12:
-                return isOre(stack, "dyeBrown");
-            case 13:
-                return isOre(stack, "dyeGreen");
-            case 14:
-                return isOre(stack, "dyeRed");
-            case 15:
-                return isOre(stack, "dyeBlack");
-        }
+    public static String[] dyes = { "dyeBlack", "dyeRed", "dyeGreen", "dyeBrown", "dyeBlue", "dyePurple", "dyeCyan",
+        "dyeLightGray", "dyeGray", "dyePink", "dyeLime", "dyeYellow", "dyeLightBlue", "dyeMagenta", "dyeOrange",
+        "dyeWhite" };
 
-        return false;
+    public static int getColor(ItemStack stack) {
+        int num = -1;
+        for (int id1 : OreDictionary.getOreIDs(stack)) {
+            for (int i = 0; i < dyes.length; i++) {
+                if (id1 == OreDictionary.getOreID(dyes[i])) {
+                    num = i;
+                }
+            }
+        }
+        return num;
     }
 
     public static int getStackDyeColor(ItemStack stack) {
-        for (int i = 0; i < 16; i++) {
-            if (isDye(stack, i)) return i;
+        return 15 - getColor(stack);
+    }
+
+    public static boolean isDye(ItemStack stack0, int color) {
+        boolean isOre1 = false;
+        if (getColor(stack0) != -1) {
+            isOre1 = true;
         }
-        return -1;
+        return isOre1;
     }
 
     public static ItemStack getDye(int dmg) {
