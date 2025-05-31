@@ -74,7 +74,12 @@ public class ItemReference {
     }
 
     public static int getStackDyeColor(ItemStack stack) {
-        return 15 - getColor(stack);
+        int num = getColor(stack);
+        if (num != -1) {
+            return 15 - num;
+        } else {
+            return -1;
+        }
     }
 
     public static boolean isDye(ItemStack stack0, int color) {
